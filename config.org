@@ -275,7 +275,7 @@ Defining the various fonts that Emacs will use.
     :height 240
     :weight 'light)
   (set-face-attribute 'variable-pitch nil
-    :font "Arial"
+    :font "Iosevka Nerd Font"
     :height 120
     :weight 'light)
   (set-face-attribute 'fixed-pitch nil
