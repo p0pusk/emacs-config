@@ -7,21 +7,33 @@
 - [[#important-programs-to-load-first][IMPORTANT PROGRAMS TO LOAD FIRST]]
   - [[#elpacapackage-manager][ElpacaPackage manager]]
   - [[#load-evil-mode][Load Evil Mode]]
-  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#general-keybindings][GENERAL KEYBINDINGS]]
-- [[#theme][THEME]]
+- [[#company][COMPANY]]
+- [[#settings][SETTINGS]]
+  - [[#no-backup-files][No backup files]]
+- [[#themes][THEMES]]
+- [[#dashboard][DASHBOARD]]
+- [[#magit][MAGIT]]
+- [[#flycheck][FLYCHECK]]
 - [[#fonts][FONTS]]
   - [[#zooming-inout][ZOOMING IN/OUT]]
 - [[#graphical-user-interface-tweaks][GRAPHICAL USER INTERFACE TWEAKS]]
   - [[#disable-menubar-toolbars-and-scrollbars][Disable Menubar, Toolbars and Scrollbars]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
 - [[#reload-emacs][RELOAD EMACS]]
-- [[#ivy-counsel][IVY (COUNSEL)]]
+- [[#shells-and-terminals][SHELLS AND TERMINALS]]
+  - [[#eshell][Eshell]]
+  - [[#vterm][Vterm]]
+  - [[#vterm-toggle][Vterm-Toggle]]
+- [[#projectile][PROJECTILE]]
+- [[#rainbow-mode][RAINBOW MODE]]
+- [[#ivy-counsel][Ivy (COUNSEL)]]
 - [[#org-mode][ORG MODE]]
   - [[#enabling-table-of-contents][Enabling Table of Contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disable-electric-indent][Disable Electric Indent]]
+  - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
 - [[#which-key][WHICH-KEY]]
 
 * IMPORTANT PROGRAMS TO LOAD FIRST
@@ -163,10 +175,15 @@ This is an icon set that can be used with dashboard, dired, ibuffer and other Em
 
     (leader-keys
       "t" '(:ignore t :wk "Toggle")
-      "t l" '(display-line-numbers-mode :wk "Toggle line numbers")
-      "t t" '(visual-line-mode :wk "Toggle truncated lines")
+      "tl" '(display-line-numbers-mode :wk "Toggle line numbers")
+      "tt" '(visual-line-mode :wk "Toggle truncated lines")
       "tv" '(vterm-toggle :wk "Toggle vterm")
       )
+
+  (leader-keys
+  "g" '(:ignore g :wk "Git")
+  "gg" '(magit :wk "Magit")
+  )
 
 
     (general-define-key
@@ -176,6 +193,8 @@ This is an icon set that can be used with dashboard, dired, ibuffer and other Em
      "C-k" 'evil-window-up
      "C-h" 'evil-window-left
      "C-l" 'evil-window-right
+     "L" 'evil-end-of-line
+     "H" 'evil-beginning-of-line
      )
 
     (leader-keys
@@ -302,8 +321,8 @@ Defining the various fonts that Emacs will use.
 
 ** ZOOMING IN/OUT
 #+begin_src emacs-lisp
-  (global-set-key (kbd "M-=") 'text-scale-increase)
-  (global-set-key (kbd "M--") 'text-scale-decrease)
+  (global-set-key (kbd "C-=") 'text-scale-increase)
+  (global-set-key (kbd "C--") 'text-scale-decrease)
 #+end_src
 
 * GRAPHICAL USER INTERFACE TWEAKS
@@ -313,6 +332,7 @@ Let's make GNU Emacs look a little better.
 #+begin_src emacs-lisp
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  (menu-bar-mode -1)
 #+end_src
 
 ** Display Line Numbers and Truncated Lines
